@@ -1,0 +1,37 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>10 Second Timer</title>
+</head>
+
+<body>
+  <script>
+  var timerRunning = false;
+  var timeleft = 10;
+  var timer = setInterval(function(){
+    if (timerRunning) {
+      document.getElementById("timer").innerHTML = timeleft + " seconds remaining";
+      document.getElementById("button").innerHTML = "Restart";
+      timeleft -= 1;
+
+      if(timeleft < 0){
+        timerRunning = false;
+        document.getElementById("timer").innerHTML = "Timer Done!"
+        document.getElementById("new").innerHTML = "Enter a a new number above and click the button below to start a new timer"
+      }
+    }
+    }, 1000);
+  function restart(){
+    var s = parseInt(document.getElementById("seconds").value, 10);
+    timeleft = s;
+    timerRunning = true;
+  }
+  </script>
+
+  <h1 id="timer">Enter a number and click the button below to start the timer</h1>
+  <input type="text" id="seconds" value="10"/>
+  <h4 id="new"></h4>
+  <button type="button" id="button" onclick="restart()">Start</button>
+
+</body>
+</html>
